@@ -35,10 +35,22 @@ export default class UI {
         <td>${book.title}</td>
         <td>${book.author}</td>
         <td>${book.isbn}</td>
-        <td><a href = "#" class = "btn btn-danger btn-sm delete"></a>Delete</td>
+        <td><a href = "#" class = "btn btn-danger btn-sm delete">Delete</a></td>
         `;
 
         list.appendChild(row);
+    }
+
+    static clearField() {
+        document.querySelector('#title').value = "";
+        document.querySelector('#author').value = "";
+        document.querySelector('#isbn').value = "";
+    }
+
+    static deleteFromScreen(evt) {
+        if(evt.target.classList.contains('delete')) {
+            evt.target.parentElement.parentElement.remove();
+        }
     }
 
 }
