@@ -3,7 +3,7 @@ import UI from './Ui.js';
 export default class Form {
    
     // Not creating static Function so that we can split the code in different function
-    // static function cannot use this and cannot call other static function or instance function
+    // static function cannot use this variable and cannot call other static function or instance function
    constructor() {
         document.querySelector('#book-form').addEventListener('submit', this.submitAction.bind(this), false);
 
@@ -13,6 +13,7 @@ export default class Form {
         const title = String(document.querySelector('#title').value);
         const author = String(document.querySelector('#author').value);
         const isbn = String(document.querySelector('#isbn').value);
+        UI.removeAlertMessage();
         if(this.validateForm(title, author, isbn)) {
             const book = new Book(title, author, isbn);
             UI.addBookToList(book);
@@ -26,11 +27,11 @@ export default class Form {
        let regex = new RegExp(expression);
        let expressionDigit = /^\d{6}$/;
        let regexDigit = new RegExp(expressionDigit);
-       if(title.match(regex) || author.match(regex)) {
-           alert("Please add valid Book and Author");
+       if(title.match(regex) || author.match(regex) || isbn.match(regex) ) {
+           UI.showAlert('danger');
            return false;
        }
-
+       UI.showAlert('success');
        return true;
        // Include using regukae expression
     //    else if(isbn.test(regexDigit) {

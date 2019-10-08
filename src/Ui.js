@@ -27,6 +27,26 @@ export default class UI {
          });     
     }
 
+    static showAlert(className) {
+        const div = document.createElement ('div');
+        div.className = `alert alert-${className}`;
+        let text;
+        if(className === 'success'){
+            text = document.createTextNode("Your Book is added to list");
+        }
+        else {
+            text = document.createTextNode("Please fill all entry");
+        }
+        div.appendChild(text);
+        const container = document.querySelector(".container");
+        const form = document.querySelector("#book-form");
+        container.insertBefore(div, form);
+    }
+
+    static removeAlertMessage() {
+        if(document.querySelector('.alert'))
+        document.querySelector('.alert').remove();
+    }
     static addBookToList(book) {
         const list = document.querySelector('#book-list');
 

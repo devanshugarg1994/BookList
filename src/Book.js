@@ -4,5 +4,15 @@ export default class Book {
         this.author = author;
         this.isbn = isbn;
     }
-    
+    static getBookfromLocalStorage () {
+
+    }
+
+    static addBookToLocalStorage () {
+
+    }
+
+    static removeBookFtomLocalStorage () {
+        
+    }
 }
