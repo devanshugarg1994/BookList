@@ -15,8 +15,9 @@ export default class Form {
         const isbn = String(document.querySelector('#isbn').value);
         UI.removeAlertMessage();
         if(this.validateForm(title, author, isbn)) {
-            const book = new Book(title, author, isbn);
-            UI.addBookToList(book);
+            const book = new Book (title, author, isbn);
+            Book.addBookToLocalStorage(book);
+            UI.addBookToScreen(book);
             UI.clearField();
         }
         
